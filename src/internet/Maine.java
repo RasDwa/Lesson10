@@ -1,6 +1,8 @@
 package internet;
 
 
+import java.util.Scanner;
+
 public class Maine {
     public static void main(String[] args) {
         Tovar[] tovarElectronica = {
@@ -20,5 +22,7 @@ public class Maine {
 
         User user1 = new User("login1", "parol1", basket1);
         User user2 = new User("login2", "parol2", basket2);
+
+        Scanner scanner = new Scanner(System.in);
     }
 }
