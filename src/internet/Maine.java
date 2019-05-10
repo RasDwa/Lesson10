@@ -24,5 +24,14 @@ public class Maine {
         User user2 = new User("login2", "parol2", basket2);
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите логин...");
+        String login = scanner.nextLine();
+        System.out.println("Введите пароль...");
+        String password = scanner.nextLine();
+        System.out.println("Добро пожаловать в наш магазин! \nВыберите цифру товара что вас интересует...");
+        SpisocKataloga[] spisocKatalogas = SpisocKataloga.values();
+        for (SpisocKataloga s : spisocKatalogas){
+            System.out.println(s+" -> "+s.ordinal());
+        }
     }
 }
