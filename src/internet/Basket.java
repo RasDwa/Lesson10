@@ -16,6 +16,9 @@ public class Basket {
         this.kyplenueTovaru = kyplenueTovaru;
     }
 
+    public Basket(Tovar tovar, User user1) {
+    }
+
     public Tovar[] getKyplenueTovaru() {
         return kyplenueTovaru;
     }
