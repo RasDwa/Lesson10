@@ -35,51 +35,53 @@ public class Maine {
             System.out.println(s + " -> " + s.ordinal());
         }
         int vibor = scanner.nextInt();
+        Tovar[] kyplenueTovaru = new Tovar[1];
+        System.out.println("Выберите то что хотите купить...");
         switch (vibor) {
             case 0:
                 for (Tovar t : tovarElectronica) {
                     System.out.println(t.getName() + " " + t.getPrice() + " " + t.getReyting());
+                }
+                int viborTovaraElectronici = scanner.nextInt();
+                switch (viborTovaraElectronici) {
+                    case 1:
+                        kyplenueTovaru[0] = new Tovar("Телефон", 3500, 8.7);
+                        break;
+                    case 2:
+                        kyplenueTovaru[0] = new Tovar("Фитнес-Браслет", 250, 8.3);
+                        break;
+                    case 3:
+                        kyplenueTovaru[0] = new Tovar("Зарядка", 310, 7.0);
+                        break;
+                    default:
+                        System.out.println("Введенная не правильная группа");
+                        ;
+                        break;
                 }
                 break;
             case 1:
                 for (Tovar t : tovarUslygi) {
                     System.out.println(t.getName() + " " + t.getPrice() + " " + t.getReyting());
                 }
+                int viborTovaraUslugi = scanner.nextInt();
+                switch (viborTovaraUslugi) {
+                    case 1:
+                        kyplenueTovaru[0] = new Tovar("Наклейка пленки", 150, 9.0);
+                        break;
+                    case 2:
+                        kyplenueTovaru[0] = new Tovar("Настройка", 50, 9.1);
+                        break;
+                    default:
+                        System.out.println("Введенная не правильная группа");
+                        ;
+                        break;
+                }
                 break;
             default:
                 System.out.println("Не правильная группа");
         }
-        System.out.println("Выберите товар что хотите купить...");
-
-        Tovar[] kyplenueTovaru = new Tovar[1];
-        int viborTovaraElectronici = scanner.nextInt();
-        switch (viborTovaraElectronici) {
-            case 1:
-                kyplenueTovaru[0] = new Tovar("Телефон", 3500, 8.7);
-                break;
-            case 2:
-                kyplenueTovaru[0] = new Tovar("Фитнес-Браслет", 250, 8.3);
-                break;
-            case 3:
-                kyplenueTovaru[0] = new Tovar("Зарядка", 310, 7.0);
-                break;
-            default:
-                System.out.println("Введенная не правильная группа");;
-                break;
-        }
-        switch (viborTovaraElectronici) {
-            case 1:
-                kyplenueTovaru[0] = new Tovar("Наклейка пленки", 150, 9.0);
-                break;
-            case 2:
-                kyplenueTovaru[0] = new Tovar("Настройка", 50, 9.1);
-                break;
-            default:
-                System.out.println("Введенная не правильная группа");;
-                break;
-        }
         for (Tovar t : kyplenueTovaru) {
-            System.out.println(t.getName() + " " + t.getPrice() + " " + t.getReyting());
+            System.out.println("Вы покупаете: " + t.getName() + " " + t.getPrice() + " " + t.getReyting());
         }
     }
 }
