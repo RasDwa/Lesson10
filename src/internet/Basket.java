@@ -1,19 +1,32 @@
 package internet;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
 
 public class Basket {
     private Tovar[] kyplenueTovaru;
     private User user;
+    private LocalDate pocupkaData;
 
-    public Basket(Tovar[] kyplenueTovaru, User user) {
+    public Basket(Tovar[] kyplenueTovaru, User user, LocalDate pocupkaData) {
         this.kyplenueTovaru = kyplenueTovaru;
         this.user = user;
+        this.pocupkaData = pocupkaData;
+
     }
 
-    public Basket(Tovar[] kyplenueTovaru) {
+    public LocalDate getPocupkaData() {
+        return pocupkaData;
+    }
+
+    public void setPocupkaData(LocalDate pocupkaData) {
+        this.pocupkaData = pocupkaData;
+    }
+
+    public Basket(Tovar[] kyplenueTovaru, LocalDate pocupkaData) {
         this.kyplenueTovaru = kyplenueTovaru;
+        this.pocupkaData = pocupkaData;
     }
 
     public Basket(Tovar tovar, User user1) {

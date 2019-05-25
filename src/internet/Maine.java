@@ -1,13 +1,17 @@
 package internet;
 
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Maine {
+    public static int countPocupok=0;
 
     public static void main(String[] args) {
 
         Tovar[] tovarElectronica = {
-                new Tovar("Телефон", 3500, 8.7),
+                new Tovar("Телефон", 3500.25, 8.7),
                 new Tovar("Фитнес-Браслет", 250, 8.3),
                 new Tovar("Зарядка", 310, 7.0)
         };
@@ -15,11 +19,12 @@ public class Maine {
                 new Tovar("Наклейка пленки", 150, 9.0),
                 new Tovar("Настройка", 50, 9.1),
         };
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
         Kategoria electronics = new Kategoria("Электроника", tovarElectronica);
         Kategoria uslygi = new Kategoria("Услуги", tovarUslygi);
 
-        Basket basket1 = new Basket(tovarElectronica);
-        Basket basket2 = new Basket(tovarUslygi);
+        Basket basket1 = new Basket(tovarElectronica, LocalDate.now());
+        Basket basket2 = new Basket(tovarUslygi,LocalDate.now());
 
         User user1 = new User("login1", "parol1", basket1);
         User user2 = new User("login2", "parol2", basket2);
@@ -148,25 +153,51 @@ public class Maine {
                 switch (vibor3){
                     case 1:
                         System.out.println("Хватить все покупать...вот то что ты покупаешь: ");
+                        shapka(basket1);
+
                         for (Tovar t : kyplenueTovaru) {
-                            System.out.println("Вы покупаете: " + t.getName() + " " + t.getPrice() + " грн " + t.getReyting()+" рейнтинг");
+                            seredina(numberFormat, electronics, t);
+                            countPocupok+=t.getPrice();
                         }
+                        System.out.println("--------------------------------");
+                        System.out.println("Итого: "+numberFormat.format(countPocupok));
                         break;
                     case 2:
+                        shapka(basket1);
+
                         for (Tovar t : kyplenueTovaru) {
-                            System.out.println("Вы покупаете: " + t.getName() + " " + t.getPrice() + " грн " + t.getReyting()+" рейнтинг");
+                            seredina(numberFormat, electronics, t);
+                            countPocupok+=t.getPrice();
                         }
+                        System.out.println("--------------------------------");
+                        System.out.println("Итого: "+numberFormat.format(countPocupok));
                         break;
                 }
                 break;
             case 2:
+                shapka(basket1);
                 Tovar [] kyplenoOdin = new Tovar[1];
                 System.arraycopy(kyplenueTovaru,0,kyplenoOdin,0,1);
                 for (Tovar t : kyplenoOdin) {
-                    System.out.println("Вы покупаете: " + t.getName() + " " + t.getPrice() + " грн " + t.getReyting()+" рейнтинг");
+                    seredina(numberFormat, electronics, t);
+
+                    countPocupok+=t.getPrice();
                 }
+                System.out.println("--------------------------------");
+                System.out.println("Итого: "+numberFormat.format(countPocupok));
                 break;
         }
 
     }
+
+    private static void shapka(Basket basket1) {
+        System.out.printf("Дата: %26s\n", basket1.getPocupkaData());
+        System.out.println();
+        System.out.printf("%s %15s %7s\n", "Продукт ", "Категория ", "Цена");
+        System.out.println("--------------------------------");
+    }
+    private static void seredina(NumberFormat numberFormat, Kategoria electronics, Tovar t) {
+        System.out.printf("%s \t%15s %7s\n", t.getName(), electronics.getNameKategoria(), numberFormat.format(t.getPrice()));
+    }
+
 }

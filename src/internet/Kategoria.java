@@ -4,22 +4,22 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Kategoria {
-    private String name;
+    private String nameKategoria;
     private Tovar[] tovars;
 
     public Kategoria(String name, Tovar[] tovars) {
-        this.name = name;
+        this.nameKategoria = name;
         this.tovars = tovars;
     }
 
 
 
-    public String getName() {
-        return name;
+    public String getNameKategoria() {
+        return nameKategoria;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameKategoria(String nameKategoria) {
+        this.nameKategoria = nameKategoria;
     }
 
     public Tovar[] getTovars() {
@@ -33,7 +33,7 @@ public class Kategoria {
     @Override
     public String toString() {
         return "Kategoria{" +
-                "name='" + name + '\'' +
+                "nameKategoria='" + nameKategoria + '\'' +
                 ", tovars=" + Arrays.toString(tovars) +
                 '}';
     }
@@ -43,13 +43,13 @@ public class Kategoria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Kategoria kategoria = (Kategoria) o;
-        return Objects.equals(name, kategoria.name) &&
+        return Objects.equals(nameKategoria, kategoria.nameKategoria) &&
                 Arrays.equals(tovars, kategoria.tovars);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name);
+        int result = Objects.hash(nameKategoria);
         result = 31 * result + Arrays.hashCode(tovars);
         return result;
     }
